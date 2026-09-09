@@ -25,3 +25,8 @@ ehthumbs_vista.db
 # PlatformIO
 .pio/
 .lib/
+
+# Environment variables / secrets
+.env
+.env.local
+.env.*.local
