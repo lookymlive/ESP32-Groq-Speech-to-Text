@@ -52,6 +52,7 @@
 #include <WiFiClientSecure.h>
 #include <ESP_I2S.h>
 #include "secrets.h"          // WIFI_SSID, WIFI_PASSWORD, GROQ_API_KEY
+#include "version.h"
 
 #define SAMPLE_RATE   16000   // Whisper's native rate; higher just wastes upload
 #define MAX_SECONDS   15      // hard stop, so a stuck button cannot record forever
@@ -313,7 +314,8 @@ static bool transcribe(String *text) {
 void setup() {
   Serial.begin(115200);
   delay(400);
-  Serial.println("\n\nSpeechToText - Groq Whisper");
+   Serial.println("\n\nSpeechToText - Groq Whisper");
+   Serial.printf("v%s (%s)\n", FIRMWARE_VERSION, FIRMWARE_BUILD_DATE);
   pinMode(PIN_BUTTON, INPUT_PULLUP);           // BOOT reads LOW when pressed
 
   WiFi.mode(WIFI_STA);
