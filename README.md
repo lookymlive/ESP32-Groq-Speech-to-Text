@@ -44,7 +44,7 @@ The BOOT button on the ESP32-S3 board is wired to GPIO 0 and is used as the reco
 
 ## Software Requirements
 
-- [Arduino IDE](https://www.arduino.cc/en/software) (or [PlatformIO](https://platformio.org/))
+- [Arduino IDE](https://www.arduino.cc/en/software) **or** [PlatformIO](https://platformio.org/) (PlatformIO is recommended — see [Development](#development))
 - **ESP32 boards package v3.3.11** — install via Boards Manager (`Tools → Board → Boards Manager`, search "esp32"). Earlier 2.x cores lack `ESP_I2S.h` and will not compile this firmware.
 - A free [Groq Console](https://console.groq.com) account and API key
 
@@ -101,6 +101,55 @@ The BOOT button on the ESP32-S3 board is wired to GPIO 0 and is used as the reco
 
 ---
 
+## Development
+
+PlatformIO and a Makefile are provided for streamlined development.
+
+### Using PlatformIO
+
+```bash
+pip install platformio
+
+# Compile
+pio run
+
+# Flash to board
+pio run -t upload
+
+# Open serial monitor
+pio run -t monitor
+
+# Or combine flash + monitor
+pio run -t upload -t monitor
+```
+
+### Using the Makefile
+
+```bash
+make deps            # install Python dependencies
+make build           # compile with PlatformIO
+make flash           # compile and upload
+make monitor         # open serial monitor
+make flash-monitor   # upload then open monitor
+make format          # format source code (clang-format)
+make clean           # remove build artifacts
+make version         # print firmware version
+```
+
+### Managing Credentials
+
+Edit `Code/secrets.h` with your Wi-Fi and Groq credentials. The file ships as a template with placeholder values.
+
+For PlatformIO workflows, you can also use a `.env.local` file (git-ignored):
+```bash
+cp .env.example .env.local
+# edit .env.local with your credentials
+```
+
+See [docs/03-configuration.md](docs/03-configuration.md) for details.
+
+---
+
 ## How It Works
 
 The firmware sends audio to the Groq Whisper endpoint via a multipart HTTP request:
@@ -130,12 +179,36 @@ See [`docs/`](docs/) for detailed step-by-step guides.
 esp32-groq-speech-to-text/
 ├── Code/
 │   ├── Code.ino        # Main firmware sketch
-│   └── secrets.h       # Wi-Fi and API credentials (edit before use)
+│   ├── secrets.h       # Wi-Fi and API credentials (edit before use)
+│   └── version.h       # Firmware version metadata
 ├── docs/               # Step-by-step documentation
-│   └── ...
+│   ├── README.md       # Documentation index
+│   ├── 01-setup.md     # Arduino IDE & board package setup
+│   ├── 02-wiring.md    # INMP441 ↔ ESP32-S3 wiring guide
+│   ├── 03-configuration.md  # Credentials setup (.env.local & secrets.h)
+│   ├── 04-usage.md     # Upload and test
+│   ├── 05-troubleshooting.md  # Common issues
+│   ├── 06-api-reference.md   # Firmware function reference
+│   ├── 07-architecture.md  # Data flow and design decisions
+│   ├── 08-faq.md       # Frequently asked questions
+│   └── bom.md          # Bill of materials with purchase links
+├── .github/
+│   └── workflows/
+│       └── build.yml   # CI: validate build on every push/PR
+├── .env.example        # Environment variables template
 ├── .gitattributes
+├── .gitignore
+├── CONTRIBUTING.md     # How to contribute
+├── Makefile            # Development shortcuts (build, flash, monitor)
+├── platformio.ini      # PlatformIO configuration
 └── README.md
 ```
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development and contribution guidelines.
 
 ---
 

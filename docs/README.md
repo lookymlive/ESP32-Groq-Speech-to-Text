@@ -6,11 +6,15 @@ Step-by-step guides for the ESP32-S3 Groq Speech-to-Text project.
 
 | Guide | Description |
 |---|---|
-| [01-setup.md](01-setup.md) | Install the Arduino IDE, ESP32 board package, and configure board settings |
+| [01-setup.md](01-setup.md) | Install the Arduino IDE or PlatformIO, ESP32 board package, and configure board settings |
 | [02-wiring.md](02-wiring.md) | Connect the INMP441 microphone to the ESP32-S3 |
-| [03-configuration.md](03-configuration.md) | Configure `secrets.h` with Wi-Fi and Groq API credentials |
+| [03-configuration.md](03-configuration.md) | Configure credentials via `secrets.h` or `.env.local` |
 | [04-usage.md](04-usage.md) | Upload the firmware and test speech-to-text |
 | [05-troubleshooting.md](05-troubleshooting.md) | Debug common issues during setup and operation |
+| [06-api-reference.md](06-api-reference.md) | Reference for all firmware functions and constants |
+| [07-architecture.md](07-architecture.md) | Data flow, design decisions, and system overview |
+| [08-faq.md](08-faq.md) | Frequently asked questions |
+| [bom.md](bom.md) | Bill of materials with component purchase links |
 
 ## Quick Start
 

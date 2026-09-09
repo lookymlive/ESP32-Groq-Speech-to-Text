@@ -44,6 +44,24 @@ Replace the placeholder values:
 4. Click **Create API Key**.
 5. Copy the key and paste it into `secrets.h`.
 
+## Alternative: Using .env.local with PlatformIO
+
+For PlatformIO-based development, you can manage credentials via environment variables instead of editing `secrets.h`:
+
+1. Copy the template:
+   ```bash
+   cp .env.example .env.local
+   ```
+2. Fill in your credentials in `.env.local`:
+   ```env
+   WIFI_SSID=your_wifi_network_name
+   WIFI_PASSWORD=your_wifi_password
+   GROQ_API_KEY=gsk_your_api_key_here
+   ```
+3. The `.env.local` file is listed in `.gitignore` and will **never** be committed to Git.
+
+This keeps your real credentials out of version control. The `secrets.h` template remains in the repo as a fallback for Arduino IDE users.
+
 ## Security Notes
 
 - `secrets.h` is intended to contain **your personal credentials**. Do **not** commit a file with real credentials to a public repository.
