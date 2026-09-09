@@ -1,0 +1,27 @@
+# Arduino build artifacts
+*.ino.eightdotthree
+*_padre.ino
+*.cpp
+*.dep
+*.map
+*.bin
+*.elf
+*.hex
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs_vista.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.log
+
+# PlatformIO
+.pio/
+.lib/
