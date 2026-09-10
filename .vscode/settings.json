@@ -1,0 +1,38 @@
+{
+    "platformio-ide": {
+        "customPATH": "true",
+        "projectEnvName": "esp32-s3-devkitc-1"
+    },
+    "C_Cpp": {
+        "default": {
+            "iprefix": [
+                "${workspaceFolder}/.pio/libdeps/esp32-s3-devkitc-1/*"
+            ],
+            "includePath": [
+                "${workspaceFolder}/.pio/libdeps/esp32-s3-devkitc-1/*/src",
+                "${workspaceFolder}/.pio/libdeps/esp32-s3-devkitc-1/*/examples",
+                "${workspaceFolder}/.pio/libdeps/esp32-s3-devkitc-1/*/util",
+                "${workspaceFolder}/.pio/libdeps/esp32-s3-devkitc-1/*/src/utility",
+                "${workspaceFolder}/.pio/libdeps/esp32-s3-devkitc-1/*/src/ESP32",
+                "${workspaceFolder}/Code"
+            ],
+            "intelliSenseMode": "gcc-x64",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    },
+    "files.associations": {
+        "*.ino": "cpp"
+    },
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+    "search.exclude": {
+        ".pio": true,
+        ".git": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.encoding": "utf8"
+}

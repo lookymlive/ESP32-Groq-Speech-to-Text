@@ -1,0 +1,50 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "PlatformIO Build",
+            "type": "shell",
+            "command": "pio",
+            "args": ["run"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "PlatformIO Upload",
+            "type": "shell",
+            "command": "pio",
+            "args": ["run", "-t", "upload"],
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "PlatformIO Monitor",
+            "type": "shell",
+            "command": "pio",
+            "args": ["run", "-t", "monitor"],
+            "group": "build",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "PlatformIO Clean",
+            "type": "shell",
+            "command": "pio",
+            "args": ["run", "--target", "clean"],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "PlatformIO Build & Upload & Monitor",
+            "type": "shell",
+            "command": "pio",
+            "args": ["run", "-t", "upload", "-t", "monitor"],
+            "group": "build",
+            "isBackground": true,
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}
