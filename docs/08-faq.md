@@ -1,5 +1,7 @@
 # Frequently Asked Questions
 
+> Last updated: 2026-09-10
+
 ## General
 
 ### Is this project free to use?
@@ -88,6 +90,41 @@ Yes. Update `PIN_MIC_SD`, `PIN_MIC_SCK`, `PIN_MIC_WS`, and `PIN_BUTTON` in `Code
 ### Where are my credentials stored?
 
 In `Code/secrets.h`. This file is **not** the place for production secrets. If you fork this repo, add `Code/secrets.h` to `.gitignore` and distribute `secrets.h.example` instead. A `.env.example` template is also provided for PlatformIO dotenv usage.
+
+### Can I use VS Code instead of the Arduino IDE?
+
+Yes. Install the PlatformIO extension for VS Code and open this folder. A `platformio.ini` is included. See [docs/vscode-setup.md](vscode-setup.md) for detailed setup, including `.vscode/settings.json` and `tasks.json`.
+
+### How do I use the Makefile?
+
+The Makefile wraps common PlatformIO commands. Run `make help` to see all targets:
+
+```bash
+make build         # compile
+make flash         # upload to board
+make monitor       # serial monitor
+make flash-monitor # upload then monitor
+make clean         # remove build artifacts
+make format        # format source (clang-format)
+make version       # print firmware version
+```
+
+### How do I check the firmware version?
+
+The firmware version is printed on startup:
+```
+SpeechToText - Groq Whisper
+v1.0.0 (Sep  9 2026)
+```
+
+You can also check it without hardware:
+```bash
+make version
+```
+
+### Does CI build the firmware?
+
+A GitHub Actions workflow (`.github/workflows/build.yml`) compiles the firmware using PlatformIO on every push and pull request to `main`. Check the **Actions** tab on GitHub for build status.
 
 ---
 
