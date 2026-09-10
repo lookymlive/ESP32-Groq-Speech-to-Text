@@ -1,5 +1,9 @@
 # ESP32-S3 Groq Speech-to-Text
 
+![CI](https://github.com/lookymlive/ESP32-Groq-Speech-to-Text/actions/workflows/build.yml/badge.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+
 Real-time speech-to-text on the ESP32-S3 using the [Groq](https://groq.com) Whisper API. Hold the BOOT button, speak, release — the transcript prints on the Serial Monitor in near real time.
 
 The firmware captures audio from an INMP441 I2S microphone, applies a high-pass filter and digital gain to clean up the signal, then streams 16 kHz mono WAV data over a persistent TLS connection to Groq. Responses typically return in under a second because the connection is pre-warmed while idle.
