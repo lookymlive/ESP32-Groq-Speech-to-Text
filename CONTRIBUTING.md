@@ -1,5 +1,7 @@
 # Contributing
 
+> Last updated: 2026-09-10
+
 Thank you for your interest in improving this project. Here's how to get started.
 
 ## Prerequisites
@@ -47,6 +49,36 @@ make monitor
 4. **Make your changes**, keeping commits focused.
 5. **Test** on real hardware if the change affects firmware behavior.
 6. **Push** and open a Pull Request.
+
+## Git Workflow
+
+This project follows [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+feat: add firmware version header
+docs: add wiring guide
+fix: resolve I2S PSRAM issue
+refactor: rename constants for clarity
+ci: add build workflow
+chore: update .gitignore
+```
+
+### Branch Naming
+
+| Type | Format | Example |
+|---|---|---|
+| Fix | `fix/description` | `fix/i2s-psram-conflict` |
+| Feature | `feat/description` | `feat/multi-language-support` |
+| Docs | `docs/description` | `docs/add-performance-guide` |
+| Chore | `chore/description` | `chore/update-dependencies` |
+
+### Pull Request Process
+
+1. Fork the repo and create a feature branch.
+2. Make focused, well-described commits.
+3. Ensure `make build` passes locally.
+4. Open a PR with a clear description of changes.
+5. CI will automatically validate the build.
 
 ## Code Style
 
