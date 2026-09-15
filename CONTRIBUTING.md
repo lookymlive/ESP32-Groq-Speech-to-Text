@@ -8,7 +8,7 @@ Thank you for your interest in improving this project. Here's how to get started
 
 - ESP32-S3 Dev Board (16 MB flash)
 - INMP441 I2S Microphone
-- Arduino IDE 2.x with ESP32 board package **3.3.11**, or PlatformIO
+- Arduino IDE 2.x with ESP32 board package **3.3.11**, or Arduino CLI
 
 See the full hardware list in [docs/bom.md](docs/bom.md).
 
@@ -21,13 +21,12 @@ See the full hardware list in [docs/bom.md](docs/bom.md).
 3. Edit `Code/secrets.h` with your credentials.
 4. Upload to your board.
 
-### Option B: PlatformIO (recommended)
+### Option B: Arduino CLI
 
 ```bash
-pip install platformio
-pio run          # compile
-pio run -t upload   # flash
-pio run -t monitor  # serial monitor
+arduino-cli compile --fqbn esp32:esp32:esp32s3 Code/Code.ino
+arduino-cli upload --fqbn esp32:esp32:esp32s3 Code/Code.ino --port <PORT>
+arduino-cli monitor -p <PORT> -b 115200
 # or use the Makefile:
 make build
 make flash
@@ -76,7 +75,7 @@ chore: update .gitignore
 
 1. Fork the repo and create a feature branch.
 2. Make focused, well-described commits.
-3. Ensure `make build` passes locally.
+3. Ensure `make build` passes locally, or run `arduino-cli compile --fqbn esp32:esp32:esp32s3 Code/Code.ino`
 4. Open a PR with a clear description of changes.
 5. CI will automatically validate the build.
 
@@ -92,7 +91,7 @@ chore: update .gitignore
 
 Since this project requires hardware, automated CI is limited. Verify changes by:
 
-1. Compiling successfully (`make build` or Arduino IDE Verify).
+1. Compiling successfully (`make build` or `arduino-cli compile --fqbn esp32:esp32:esp32s3 Code/Code.ino`).
 2. Uploading to an ESP32-S3 and confirming:
    - Wi-Fi connects
    - I2S mic initializes (`[mic] started`)
@@ -109,6 +108,6 @@ Before opening an issue:
 When opening an issue, include:
 - Your ESP32-S3 board model
 - ESP32 board package version
-- OS and IDE (Arduino IDE / PlatformIO version)
+- OS and IDE (Arduino IDE / Arduino CLI version)
 - Full Serial Monitor output
 - Your wiring verification
