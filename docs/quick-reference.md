@@ -39,20 +39,19 @@ Edit `Code/secrets.h`:
 #define GROQ_API_KEY    "gsk_..."
 ```
 
-Or use `.env.local` (PlatformIO):
+Or use `.env` (if managing credentials via environment):
 ```bash
-cp .env.example .env.local
+cp .env.example .env
 ```
 
 ## Development Commands
 
-### PlatformIO
+### Arduino CLI
 
 ```bash
-pio run                     # build
-pio run -t upload           # flash
-pio run -t monitor          # serial monitor
-pio run -t upload -t monitor # flash + monitor
+arduino-cli compile --fqbn esp32:esp32:esp32s3 Code/Code.ino
+arduino-cli compile --fqbn esp32:esp32:esp32s3 Code/Code.ino --upload
+arduino-cli monitor -p <PORT> -b 115200
 ```
 
 ### Makefile
@@ -69,9 +68,9 @@ make version
 
 ### VS Code
 
-- `Ctrl+Shift+B` → PlatformIO Build (default)
-- `Ctrl+Shift+B` → PlatformIO Upload
-- `Ctrl+Shift+B` → PlatformIO Monitor
+- `Ctrl+Shift+B` → Arduino Build (default)
+- `Ctrl+Shift+B` → Arduino Upload
+- `Ctrl+Shift+B` → Arduino Monitor
 
 ## Serial Monitor Guide
 
