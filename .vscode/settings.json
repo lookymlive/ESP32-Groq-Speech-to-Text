@@ -1,19 +1,15 @@
 {
-    "platformio-ide": {
-        "customPATH": "true",
-        "projectEnvName": "esp32-s3-devkitc-1"
+    "arduino": {
+        "fqbn": "esp32:esp32:esp32s3",
+        "commandPath": "",
+        "cliPath": "arduino-cli"
     },
     "C_Cpp": {
         "default": {
             "iprefix": [
-                "${workspaceFolder}/.pio/libdeps/esp32-s3-devkitc-1/*"
+                "${workspaceFolder}/Code"
             ],
             "includePath": [
-                "${workspaceFolder}/.pio/libdeps/esp32-s3-devkitc-1/*/src",
-                "${workspaceFolder}/.pio/libdeps/esp32-s3-devkitc-1/*/examples",
-                "${workspaceFolder}/.pio/libdeps/esp32-s3-devkitc-1/*/util",
-                "${workspaceFolder}/.pio/libdeps/esp32-s3-devkitc-1/*/src/utility",
-                "${workspaceFolder}/.pio/libdeps/esp32-s3-devkitc-1/*/src/ESP32",
                 "${workspaceFolder}/Code"
             ],
             "intelliSenseMode": "gcc-x64",
@@ -29,7 +25,6 @@
         "**/Thumbs.db": true
     },
     "search.exclude": {
-        ".pio": true,
         ".git": true
     },
     "files.trimTrailingWhitespace": true,

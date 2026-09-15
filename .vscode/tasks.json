@@ -2,10 +2,10 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "PlatformIO Build",
+            "label": "Arduino CLI Compile",
             "type": "shell",
-            "command": "pio",
-            "args": ["run"],
+            "command": "arduino-cli",
+            "args": ["compile", "--fqbn", "esp32:esp32:esp32s3", "Code/Code.ino"],
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -13,38 +13,45 @@
             "problemMatcher": ["$gcc"]
         },
         {
-            "label": "PlatformIO Upload",
+            "label": "Arduino CLI Upload",
             "type": "shell",
-            "command": "pio",
-            "args": ["run", "-t", "upload"],
+            "command": "arduino-cli",
+            "args": ["compile", "--fqbn", "esp32:esp32:esp32s3", "Code/Code.ino", "--upload", "--port", "${input:serialPort}"],
             "group": "build",
             "problemMatcher": ["$gcc"]
         },
         {
-            "label": "PlatformIO Monitor",
+            "label": "Arduino CLI Monitor",
             "type": "shell",
-            "command": "pio",
-            "args": ["run", "-t", "monitor"],
+            "command": "arduino-cli",
+            "args": ["monitor", "-p", "${input:serialPort}", "-b", "115200"],
             "group": "build",
             "isBackground": true,
             "problemMatcher": []
         },
         {
-            "label": "PlatformIO Clean",
+            "label": "Arduino CLI Clean",
             "type": "shell",
-            "command": "pio",
-            "args": ["run", "--target", "clean"],
+            "command": "rm",
+            "args": ["-rf", "build"],
             "group": "build",
             "problemMatcher": []
         },
         {
-            "label": "PlatformIO Build & Upload & Monitor",
+            "label": "Arduino CLI Upload & Monitor",
             "type": "shell",
-            "command": "pio",
-            "args": ["run", "-t", "upload", "-t", "monitor"],
+            "command": "arduino-cli",
+            "args": ["compile", "--fqbn", "esp32:esp32:esp32s3", "Code/Code.ino", "--upload", "--port", "${input:serialPort}"],
             "group": "build",
             "isBackground": true,
-            "problemMatcher": ["$gcc"]
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "serialPort",
+            "type": "promptString",
+            "description": "Enter the serial port (e.g., COM3 or /dev/ttyUSB0)"
         }
     ]
 }
