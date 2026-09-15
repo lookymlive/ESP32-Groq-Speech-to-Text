@@ -20,9 +20,16 @@ Groq's LPU-based inference returns results in under a second, which makes the ex
 
 ## Setup
 
-### Can I use PlatformIO instead of Arduino IDE?
+### Can I use Arduino CLI instead of the Arduino IDE?
 
-Yes. A `platformio.ini` is included. See [docs/01-setup.md](01-setup.md) for the Arduino IDE guide; PlatformIO follows the same wiring and configuration steps.
+Yes. The firmware can be built with Arduino CLI as well. Install Arduino CLI, add the ESP32 board package, and run:
+
+```bash
+arduino-cli core install esp32:esp32
+arduino-cli compile --fqbn esp32:esp32:esp32s3 Code/Code.ino --upload
+```
+
+See [docs/01-setup.md](01-setup.md) for the full setup guide.
 
 ### Do I need to install any external libraries?
 
@@ -89,15 +96,15 @@ Yes. Update `PIN_MIC_SD`, `PIN_MIC_SCK`, `PIN_MIC_WS`, and `PIN_BUTTON` in `Code
 
 ### Where are my credentials stored?
 
-In `Code/secrets.h`. This file is **not** the place for production secrets. If you fork this repo, add `Code/secrets.h` to `.gitignore` and distribute `secrets.h.example` instead. A `.env.example` template is also provided for PlatformIO dotenv usage.
+In `Code/secrets.h`. This file is **not** the place for production secrets. If you fork this repo, add `Code/secrets.h` to `.gitignore` and distribute `secrets.h.example` instead.
 
 ### Can I use VS Code instead of the Arduino IDE?
 
-Yes. Install the PlatformIO extension for VS Code and open this folder. A `platformio.ini` is included. See [docs/vscode-setup.md](vscode-setup.md) for detailed setup, including `.vscode/settings.json` and `tasks.json`.
+Yes. Install the Arduino extension for VS Code and open this folder. See [docs/vscode-setup.md](vscode-setup.md) for detailed setup.
 
 ### How do I use the Makefile?
 
-The Makefile wraps common PlatformIO commands. Run `make help` to see all targets:
+The Makefile wraps common Arduino CLI commands. Run `make help` to see all targets:
 
 ```bash
 make build         # compile
@@ -124,7 +131,7 @@ make version
 
 ### Does CI build the firmware?
 
-A GitHub Actions workflow (`.github/workflows/build.yml`) compiles the firmware using PlatformIO on every push and pull request to `main`. Check the **Actions** tab on GitHub for build status.
+A GitHub Actions workflow (`.github/workflows/build.yml`) compiles the firmware using Arduino CLI on every push and pull request to `main`. Check the **Actions** tab on GitHub for build status.
 
 ---
 
