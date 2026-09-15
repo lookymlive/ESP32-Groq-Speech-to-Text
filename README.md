@@ -48,7 +48,7 @@ The BOOT button on the ESP32-S3 board is wired to GPIO 0 and is used as the reco
 
 ## Software Requirements
 
-- [Arduino IDE](https://www.arduino.cc/en/software) **or** [PlatformIO](https://platformio.org/) (PlatformIO is recommended — see [Development](#development))
+- [Arduino IDE](https://www.arduino.cc/en/software) **or** [Arduino CLI](https://arduino.github.io/arduino-cli/) (see [Development](#development))
 - **ESP32 boards package v3.3.11** — install via Boards Manager (`Tools → Board → Boards Manager`, search "esp32"). Earlier 2.x cores lack `ESP_I2S.h` and will not compile this firmware.
 - A free [Groq Console](https://console.groq.com) account and API key
 
@@ -107,31 +107,26 @@ The BOOT button on the ESP32-S3 board is wired to GPIO 0 and is used as the reco
 
 ## Development
 
-PlatformIO and a Makefile are provided for streamlined development.
+Arduino CLI and a Makefile are provided for streamlined development.
 
-### Using PlatformIO
+### Using Arduino CLI
 
 ```bash
-pip install platformio
-
 # Compile
-pio run
+arduino-cli compile --fqbn esp32:esp32:esp32s3 Code/Code.ino
 
 # Flash to board
-pio run -t upload
+arduino-cli upload --fqbn esp32:esp32:esp32s3 Code/Code.ino --port <PORT>
 
 # Open serial monitor
-pio run -t monitor
-
-# Or combine flash + monitor
-pio run -t upload -t monitor
+arduino-cli monitor -p <PORT> -b 115200
 ```
 
 ### Using the Makefile
 
 ```bash
 make deps            # install Python dependencies
-make build           # compile with PlatformIO
+make build           # compile with Arduino CLI
 make flash           # compile and upload
 make monitor         # open serial monitor
 make flash-monitor   # upload then open monitor
@@ -143,12 +138,6 @@ make version         # print firmware version
 ### Managing Credentials
 
 Edit `Code/secrets.h` with your Wi-Fi and Groq credentials. The file ships as a template with placeholder values.
-
-For PlatformIO workflows, you can also use a `.env.local` file (git-ignored):
-```bash
-cp .env.example .env.local
-# edit .env.local with your credentials
-```
 
 See [docs/03-configuration.md](docs/03-configuration.md) for details.
 
@@ -189,7 +178,7 @@ esp32-groq-speech-to-text/
 │   ├── README.md       # Documentation index
 │   ├── 01-setup.md     # Arduino IDE & board package setup
 │   ├── 02-wiring.md    # INMP441 ↔ ESP32-S3 wiring guide
-│   ├── 03-configuration.md  # Credentials setup (.env.local & secrets.h)
+│   ├── 03-configuration.md  # Credentials setup (secrets.h)
 │   ├── 04-usage.md     # Upload and test
 │   ├── 05-troubleshooting.md  # Common issues
 │   ├── 06-api-reference.md   # Firmware function reference
@@ -204,7 +193,7 @@ esp32-groq-speech-to-text/
 ├── .gitignore
 ├── CONTRIBUTING.md     # How to contribute
 ├── Makefile            # Development shortcuts (build, flash, monitor)
-├── platformio.ini      # PlatformIO configuration
+├── platformio.ini      # PlatformIO configuration (experimental; Arduino CLI recommended)
 └── README.md
 ```
 
