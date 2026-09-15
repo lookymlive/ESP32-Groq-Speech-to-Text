@@ -2,6 +2,8 @@
 
 This guide walks through installing the Arduino IDE, adding the ESP32 board package, and configuring the correct board settings.
 
+> **Arduino CLI alternative:** You can use Arduino CLI instead of the IDE. Run `arduino-cli core install esp32:esp32@3.3.11` and compile with `arduino-cli compile --fqbn esp32:esp32:esp32s3 Code/Code.ino`. See [vscode-setup.md](vscode-setup.md) for CLI usage in VS Code.
+
 ## Prerequisites
 
 - A computer running Windows, macOS, or Linux
