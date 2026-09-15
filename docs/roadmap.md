@@ -32,7 +32,7 @@ Planned improvements and future directions for the ESP32-S3 Groq Speech-to-Text 
 - [x] High-pass filter for DC offset removal
 - [x] Pre-warmed TLS connection
 - [x] Chunked audio streaming
-- [x] PlatformIO + Arduino IDE support
+- [x] Arduino CLI + Arduino IDE support
 - [x] Comprehensive documentation suite
 - [x] CI build validation
 - [x] Makefile and VS Code development tools
