@@ -17,13 +17,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Renamed credential constants from `SEED_*` to `WIFI_SSID`/`GROQ_API_KEY`
+- Migrated CI workflow from PlatformIO to Arduino CLI (resolves `ESP_I2S.h` build failures)
+- Updated `platformio.ini` to remove incompatible GitHub framework reference
 
 ## [1.0.0] - 2026-09-09
 
 ### Added
 - Initial ESP32-S3 + INMP441 + Groq Whisper integration
 - Real-time speech-to-text via BOOT button trigger
-- Support for Arduino IDE and PlatformIO
+- Support for Arduino IDE and Arduino CLI
 - Comprehensive documentation suite
 - GitHub Actions CI workflow
 - BOM with component purchase links
