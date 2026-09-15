@@ -18,23 +18,24 @@ deps:
 
 ## Compile the firmware
 build:
-	@pio run
+	@arduino-cli compile --fqbn esp32:esp32:esp32s3 Code/Code.ino
 
 ## Upload firmware to the board
 flash:
-	@pio run -t upload
+	@arduino-cli compile --fqbn esp32:esp32:esp32s3 Code/Code.ino --upload
 
 ## Open the serial monitor (115200 baud)
 monitor:
-	@pio run -t monitor
+	@echo "Use Ctrl+Shift+P → 'Arduino: Open Serial Monitor' or any serial terminal at 115200 baud"
 
 ## Upload firmware and immediately open serial monitor
 flash-monitor:
-	@pio run -t upload && sleep 2 && pio run -t monitor
+	@arduino-cli compile --fqbn esp32:esp32:esp32s3 Code/Code.ino --upload
+	@echo "Serial monitor: use Ctrl+Shift+P → 'Arduino: Open Serial Monitor' or any terminal at 115200 baud"
 
 ## Remove build artifacts
 clean:
-	@pio run --target clean
+	@rm -rf build
 
 ## Format source code with clang-format
 format:
